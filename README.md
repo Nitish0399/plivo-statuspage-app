@@ -1,6 +1,8 @@
 # Plivo StatusPage App
 
-This project is a full-stack application with a clear separation of concerns between the server-side REST API and the client-side frontend code.
+## Demo
+
+-- https://plivo-statuspage-client.vercel.app
 
 ## Features
 
