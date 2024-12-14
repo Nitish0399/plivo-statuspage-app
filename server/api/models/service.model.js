@@ -14,7 +14,6 @@ serviceDb.count({}, (err, count) => {
       if (err) {
         console.error("Error inserting seed data:", err);
       } else {
-        console.log("App Url", process.env.APP_URL);
         console.log("Seed data inserted successfully.");
       }
     });
