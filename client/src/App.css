@@ -1,0 +1,29 @@
+.App {
+  text-align: center;
+}
+
+h2 {
+  color: #333;
+}
+
+h3 {
+  color: #007bff;
+}
+
+p {
+  font-size: 16px;
+}
+
+.ServiceStatus,
+.Incident {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 4px;
+}
+
+.ServiceStatus h4,
+.Incident h4 {
+  margin: 0;
+  color: #555;
+}
