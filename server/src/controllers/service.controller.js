@@ -20,9 +20,11 @@ const createService = async (req, res) => {
  * @param {Object} req - The HTTP request object.
  * @param {Object} res - The HTTP response object.
  */
-const getAllServices = async (req, res) => {
+const getAppServices = async (req, res) => {
   try {
-    const services = await serviceService.getAllServices({});
+    const services = await serviceService.getAppServices(
+      req.params.applicationId
+    );
     res.status(200).json(services);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -85,7 +87,7 @@ const deleteService = async (req, res) => {
 
 module.exports = {
   createService,
-  getAllServices,
+  getAppServices,
   getServiceById,
   updateService,
   deleteService,

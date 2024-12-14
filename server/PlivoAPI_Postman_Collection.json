@@ -1,335 +1,440 @@
 {
-  "info": {
-    "_postman_id": "e56f8fdb-c8a6-4f89-9937-ea9a8779b49d",
-    "name": "Plivo StatusPage API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-  },
-  "item": [
-    {
-      "name": "Applications",
-      "item": [
-        {
-          "name": "Create Application",
-          "request": {
-            "url": {
-              "raw": "{{baseUrl}}/api/v1/applications",
-              "host": ["{{baseUrl}}/api/v1"],
-              "path": ["applications"]
-            },
-            "method": "POST",
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"name\": \"My Application\",\n    \"status\": \"operational\",\n    \"description\": \"My Application description.\"\n}"
-            },
-            "headers": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ]
-          }
-        },
-        {
-          "name": "Get Applications",
-          "request": {
-            "url": {
-              "raw": "{{baseUrl}}/api/v1/applications",
-              "host": ["{{baseUrl}}/api/v1"],
-              "path": ["applications"]
-            },
-            "method": "GET"
-          }
-        },
-        {
-          "name": "Get Application by ID",
-          "request": {
-            "url": {
-              "raw": "{{baseUrl}}/api/v1/applications/:id",
-              "host": ["{{baseUrl}}/api/v1"],
-              "path": ["applications", ":id"]
-            },
-            "method": "GET"
-          }
-        },
-        {
-          "name": "Update Application",
-          "request": {
-            "url": {
-              "raw": "{{baseUrl}}/api/v1/applications/:id",
-              "host": ["{{baseUrl}}/api/v1"],
-              "path": ["applications", ":id"]
-            },
-            "method": "PUT",
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"name\": \"Updated Application Name\",\n    \"status\": \"degraded\",\n    \"description\": \"Updated description.\"\n}"
-            },
-            "headers": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ]
-          }
-        },
-        {
-          "name": "Delete Application",
-          "request": {
-            "url": {
-              "raw": "{{baseUrl}}/api/v1/applications/:id",
-              "host": ["{{baseUrl}}/api/v1"],
-              "path": ["applications", ":id"]
-            },
-            "method": "DELETE"
-          }
-        }
-      ]
-    },
-    {
-      "name": "Incidents",
-      "item": [
-        {
-          "name": "Create Incident",
-          "request": {
-            "url": {
-              "raw": "{{baseUrl}}/api/v1/incidents",
-              "host": ["{{baseUrl}}/api/v1"],
-              "path": ["incidents"]
-            },
-            "method": "POST",
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"name\": \"Incident 1\",\n    \"status\": \"open\",\n    \"applicationId\": \"1234\"\n}"
-            },
-            "headers": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ]
-          }
-        },
-        {
-          "name": "Get Incidents",
-          "request": {
-            "url": {
-              "raw": "{{baseUrl}}/api/v1/incidents/applications/:applicationId",
-              "host": ["{{baseUrl}}/api/v1"],
-              "path": ["incidents"]
-            },
-            "method": "GET"
-          }
-        },
-        {
-          "name": "Get Incident by ID",
-          "request": {
-            "url": {
-              "raw": "{{baseUrl}}/api/v1/incidents/:id",
-              "host": ["{{baseUrl}}/api/v1"],
-              "path": ["incidents", ":id"]
-            },
-            "method": "GET"
-          }
-        },
-        {
-          "name": "Update Incident",
-          "request": {
-            "url": {
-              "raw": "{{baseUrl}}/api/v1/incidents/:id",
-              "host": ["{{baseUrl}}/api/v1"],
-              "path": ["incidents", ":id"]
-            },
-            "method": "PUT",
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"status\": \"resolved\",\n    \"description\": \"Incident has been resolved.\"\n}"
-            },
-            "headers": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ]
-          }
-        },
-        {
-          "name": "Delete Incident",
-          "request": {
-            "url": {
-              "raw": "{{baseUrl}}/api/v1/incidents/:id",
-              "host": ["{{baseUrl}}/api/v1"],
-              "path": ["incidents", ":id"]
-            },
-            "method": "DELETE"
-          }
-        }
-      ]
-    },
-    {
-      "name": "Service Statuses",
-      "item": [
-        {
-          "name": "Create Service Status",
-          "request": {
-            "url": {
-              "raw": "{{baseUrl}}/api/v1/service-status",
-              "host": ["{{baseUrl}}/api/v1"],
-              "path": ["service-status"]
-            },
-            "method": "POST",
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"serviceName\": \"Service 1\",\n    \"status\": \"operational\",\n    \"applicationId\": \"1234\"\n}"
-            },
-            "headers": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ]
-          }
-        },
-        {
-          "name": "Get Service Statuses",
-          "request": {
-            "url": {
-              "raw": "{{baseUrl}}/api/v1/service-status",
-              "host": ["{{baseUrl}}/api/v1"],
-              "path": ["service-status"]
-            },
-            "method": "GET"
-          }
-        },
-        {
-          "name": "Get Service Status by ID",
-          "request": {
-            "url": {
-              "raw": "{{baseUrl}}/api/v1/service-status/:id",
-              "host": ["{{baseUrl}}/api/v1"],
-              "path": ["service-status", ":id"]
-            },
-            "method": "GET"
-          }
-        },
-        {
-          "name": "Update Service Status",
-          "request": {
-            "url": {
-              "raw": "{{baseUrl}}/api/v1/service-status/:id",
-              "host": ["{{baseUrl}}/api/v1"],
-              "path": ["service-status", ":id"]
-            },
-            "method": "PUT",
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"status\": \"degraded\",\n    \"description\": \"Service is facing issues.\"\n}"
-            },
-            "headers": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ]
-          }
-        },
-        {
-          "name": "Delete Service Status",
-          "request": {
-            "url": {
-              "raw": "{{baseUrl}}/api/v1/service-status/:id",
-              "host": ["{{baseUrl}}/api/v1"],
-              "path": ["service-status", ":id"]
-            },
-            "method": "DELETE"
-          }
-        }
-      ]
-    },
-    {
-      "name": "Services",
-      "item": [
-        {
-          "name": "Create Service",
-          "request": {
-            "url": {
-              "raw": "{{baseUrl}}/api/v1/services",
-              "host": ["{{baseUrl}}/api/v1"],
-              "path": ["services"]
-            },
-            "method": "POST",
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"serviceName\": \"Service 1\",\n    \"status\": \"operational\",\n    \"applicationId\": \"1234\"\n}"
-            },
-            "headers": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ]
-          }
-        },
-        {
-          "name": "Get All Services",
-          "request": {
-            "url": {
-              "raw": "{{baseUrl}}/api/v1/services",
-              "host": ["{{baseUrl}}/api/v1"],
-              "path": ["services"]
-            },
-            "method": "GET"
-          }
-        },
-        {
-          "name": "Get Service by ID",
-          "request": {
-            "url": {
-              "raw": "{{baseUrl}}/api/v1/services/:id",
-              "host": ["{{baseUrl}}/api/v1"],
-              "path": ["services", ":id"]
-            },
-            "method": "GET"
-          }
-        },
-        {
-          "name": "Update Service",
-          "request": {
-            "url": {
-              "raw": "{{baseUrl}}/api/v1/services/:id",
-              "host": ["{{baseUrl}}/api/v1"],
-              "path": ["services", ":id"]
-            },
-            "method": "PUT",
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"serviceName\": \"Updated Service Name\",\n    \"status\": \"degraded\",\n    \"description\": \"Updated description\"\n}"
-            },
-            "headers": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ]
-          }
-        },
-        {
-          "name": "Delete Service",
-          "request": {
-            "url": {
-              "raw": "{{baseUrl}}/api/v1/services/:id",
-              "host": ["{{baseUrl}}/api/v1"],
-              "path": ["services", ":id"]
-            },
-            "method": "DELETE"
-          }
-        }
-      ]
-    }
-  ],
-  "variable": [
-    {
-      "key": "baseUrl",
-      "value": "http://localhost:8000"
-    }
-  ]
+	"info": {
+		"_postman_id": "9198777e-1a49-47d6-a6e9-0117d15ea33f",
+		"name": "Plivo StatusPage API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11775338"
+	},
+	"item": [
+		{
+			"name": "Applications",
+			"item": [
+				{
+					"name": "Create Application",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"My Application\",\n    \"status\": \"operational\",\n    \"description\": \"My Application description.\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/applications",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"applications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Applications",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/applications",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"applications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Application by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/applications/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"applications",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Application",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Updated Application Name\",\n    \"status\": \"degraded\",\n    \"description\": \"Updated description.\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/applications/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"applications",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Application",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/applications/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"applications",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Incidents",
+			"item": [
+				{
+					"name": "Create Incident",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Incident 1\",\n    \"status\": \"open\",\n    \"applicationId\": \"1234\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/incidents",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"incidents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Incidents",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/incidents/applications/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"incidents",
+								"applications",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Incident by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/incidents/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"incidents",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Incident",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"resolved\",\n    \"description\": \"Incident has been resolved.\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/incidents/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"incidents",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Incident",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/incidents/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"incidents",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Services",
+			"item": [
+				{
+					"name": "Create Service",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"serviceName\": \"Service 1\",\n    \"status\": \"operational\",\n    \"applicationId\": \"1234\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/services",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"services"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get App Services",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/services/applications/:applicationId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"services",
+								"applications",
+								":applicationId"
+							],
+							"variable": [
+								{
+									"key": "applicationId",
+									"value": "plivo"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Service by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/services/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"services",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Service",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"serviceName\": \"Updated Service Name\",\n    \"status\": \"degraded\",\n    \"description\": \"Updated description\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/services/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"services",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Service",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/services/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"services",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8000"
+		}
+	]
 }

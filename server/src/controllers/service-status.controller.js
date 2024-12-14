@@ -28,6 +28,16 @@ const getAllServiceStatuses = (req, res) => {
   });
 };
 
+const getServiceStatusByServiceId = (req, res) => {
+  const { serviceId } = req.params;
+  serviceStatusService.getServiceStatusByServiceId(serviceId, (err, status) => {
+    if (err || !status) {
+      return res.status(404).json({ error: "Service status not found." });
+    }
+    res.status(200).json(status);
+  });
+};
+
 const getServiceStatusById = (req, res) => {
   const { id } = req.params;
   serviceStatusService.getServiceStatusById(id, (err, status) => {
@@ -68,6 +78,7 @@ const deleteServiceStatus = (req, res) => {
 module.exports = {
   createServiceStatus,
   getAllServiceStatuses,
+  getServiceStatusByServiceId,
   getServiceStatusById,
   updateServiceStatus,
   deleteServiceStatus,

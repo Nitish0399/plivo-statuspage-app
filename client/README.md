@@ -11,7 +11,6 @@ This app provides a user-friendly public-facing page displaying the status of ap
 - **View Applications**: Displays the status of each application.
 - **View Services**: Shows the status of services under each application.
 - **View Incidents**: Lists ongoing or past incidents affecting the applications.
-- **Real-Time Data**: Fetches data from a backend API to display real-time status updates.
 - **Responsive Design**: Optimized for both desktop and mobile views.
 
 ---

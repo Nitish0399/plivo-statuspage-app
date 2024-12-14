@@ -2,6 +2,12 @@
 
 This project is a full-stack application with a clear separation of concerns between the server-side REST API and the client-side frontend code.
 
+## Features
+
+- **View Applications**: Displays the status of each application.
+- **View Services**: Shows the status of services under each application.
+- **View Incidents**: Lists ongoing or past incidents affecting the applications.
+
 ## Folders
 
 - **server:** Contains the code for the REST API. This is where you'll find logic for managing the applications, services, indicents, and status.

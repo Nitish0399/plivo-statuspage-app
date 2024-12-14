@@ -81,10 +81,28 @@ const deleteIncident = (id) => {
   });
 };
 
+/**
+ * Fetches incidents by applicationId.
+ * @param {string} applicationId - The ID of the application to retrieve incidents for.
+ * @returns {Promise<Array>} - A promise that resolves to an array of incidents.
+ */
+const listIncidentsByApplication = (applicationId) => {
+  return new Promise((resolve, reject) => {
+    incidentModel.find({ applicationId }, (err, incidents) => {
+      if (err) {
+        reject("Error retrieving incidents: " + err);
+      } else {
+        resolve(incidents);
+      }
+    });
+  });
+};
+
 module.exports = {
   createIncident,
   getIncidentsByServiceId,
   getIncidentById,
   updateIncident,
   deleteIncident,
+  listIncidentsByApplication,
 };

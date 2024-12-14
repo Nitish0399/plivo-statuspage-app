@@ -1,12 +1,12 @@
 import React from "react";
 
-const ServiceStatus = ({ service }) => {
+const Service = ({ service }) => {
   return (
-    <div className="my-4">
+    <div>
       <h4>{service.name}</h4>
       <p>Status: {service.status}</p>
     </div>
   );
 };
 
-export default ServiceStatus;
+export default Service;

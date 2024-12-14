@@ -15,13 +15,13 @@ const createService = (data) => {
 };
 
 /**
- * Get all services of an application
+ * Get services of an application
  * @param {Object} query - The query to filter services.
  * @returns {Promise} - A promise that resolves to the list of services.
  */
-const getAllServices = (query) => {
+const getAppServices = (applicationId) => {
   return new Promise((resolve, reject) => {
-    serviceModel.find(query, (err, services) => {
+    serviceModel.find({ applicationId }, (err, services) => {
       if (err) return reject(err);
       resolve(services);
     });
@@ -78,7 +78,7 @@ const deleteService = (serviceId) => {
 
 module.exports = {
   createService,
-  getAllServices,
+  getAppServices,
   getServiceById,
   updateService,
   deleteService,
