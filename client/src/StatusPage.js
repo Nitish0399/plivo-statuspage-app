@@ -12,9 +12,7 @@ const StatusPage = () => {
   // Fetch application data
   useEffect(() => {
     axios
-      .get(
-        "https://plivo-statuspage-server-8daaf1uvv-nitish0399s-projects.vercel.app/api/v1/applications"
-      )
+      .get(`${process.env.REACT_APP_API}/applications`)
       .then((response) => {
         setApplications(response.data);
       })
@@ -28,7 +26,7 @@ const StatusPage = () => {
     // Fetch incidents data
     axios
       .get(
-        `https://plivo-statuspage-server-8daaf1uvv-nitish0399s-projects.vercel.app/api/v1/services/applications/${applicationId}`
+        `${process.env.REACT_APP_API}/services/applications/${applicationId}`
       )
       .then((response) => {
         setServices(response.data);
@@ -43,7 +41,7 @@ const StatusPage = () => {
     // Fetch incidents data
     axios
       .get(
-        `https://plivo-statuspage-server-8daaf1uvv-nitish0399s-projects.vercel.app/api/v1/incidents/applications/${applicationId}`
+        `${process.env.REACT_APP_API}/incidents/applications/${applicationId}`
       )
       .then((response) => {
         setIncidents(response.data);
