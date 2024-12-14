@@ -3,8 +3,8 @@ const { createServer } = require("http");
 require("dotenv").config();
 const cookieParser = require("cookie-parser");
 
-const appRouter = require("./src/routes/app.route");
-const errorHandler = require("./src/middlewares/error-handler.mw");
+const appRouter = require("./api/routes/app.route");
+const errorHandler = require("./api/middlewares/error-handler.mw");
 
 /* -------------- Initializations ------------ */
 
