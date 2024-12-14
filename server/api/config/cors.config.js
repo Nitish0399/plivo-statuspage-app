@@ -1,9 +1,8 @@
-var corsOptions = {
-  origin: [
-    "https://plivo-statuspage-client.vercel.app",
-    "http://localhost:3000",
-  ],
+const corsOptions = {
+  origin: [process.env.APP_URL],
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
+
+console.log("App Url", process.env.APP_URL);
 
 module.exports = corsOptions;

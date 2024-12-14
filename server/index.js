@@ -2,9 +2,11 @@ const express = require("express");
 const { createServer } = require("http");
 require("dotenv").config();
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
 
 const appRouter = require("./api/routes/app.route");
 const errorHandler = require("./api/middlewares/error-handler.mw");
+const corsOptions = require("./api/config/cors.config");
 
 /* -------------- Initializations ------------ */
 
@@ -13,6 +15,8 @@ const app = express();
 const httpServer = createServer(app);
 
 /* -------------- Mount Middlewares ------------ */
+
+app.use(cors(corsOptions));
 
 app.use(cookieParser());
 
