@@ -1,6 +1,8 @@
 const corsOptions = {
   origin: process.env.APP_URL,
-  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true, // Allow cookies to be sent with requests
 };
 
 module.exports = corsOptions;

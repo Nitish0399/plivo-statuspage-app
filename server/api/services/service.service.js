@@ -1,4 +1,5 @@
 const serviceModel = require("../models/service.model");
+const { emitStatusChange } = require("../../socket");
 
 /**
  * Create a new service for the application
@@ -56,6 +57,7 @@ const updateService = (serviceId, data) => {
       {},
       (err, numAffected) => {
         if (err) return reject(err);
+        emitStatusChange(serviceId, data.status);
         resolve(numAffected);
       }
     );

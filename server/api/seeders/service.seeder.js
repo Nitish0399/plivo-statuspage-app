@@ -5,14 +5,14 @@ const services = [
     name: "Plivo Voice API",
     description:
       "The voice API that enables developers to add voice calling functionality.",
-    status: "active",
+    status: "Operational",
     applicationId: "1", // Assuming this references an application like Plivo
   },
   {
     _id: "2",
     name: "Plivo SMS API",
     description: "API for sending SMS messages globally.",
-    status: "active",
+    status: "Partial Outage",
     applicationId: "1",
   },
   {
@@ -20,7 +20,7 @@ const services = [
     name: "Plivo Billing System",
     description:
       "The billing service responsible for handling account charges and transactions.",
-    status: "inactive",
+    status: "Operational",
     applicationId: "1",
   },
 ];

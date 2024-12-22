@@ -3,6 +3,7 @@ const { createServer } = require("http");
 require("dotenv").config();
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const { initializeSocket } = require("./socket");
 
 const appRouter = require("./api/routes/app.route");
 const errorHandler = require("./api/middlewares/error-handler.mw");
@@ -14,13 +15,16 @@ const app = express();
 
 const httpServer = createServer(app);
 
-/* -------------- Mount Middlewares ------------ */
+// Initialize Socket.IO
+initializeSocket(httpServer);
 
-app.use(cors(corsOptions));
+/* -------------- Mount Middlewares ------------ */
 
 app.use(cookieParser());
 
 app.use(express.json());
+
+app.use(cors(corsOptions));
 
 app.get("/", (req, res) => {
   res.send("Access to this page is forbidden");

@@ -1,14 +1,20 @@
 import React from "react";
 import "./App.css";
-import StatusPage from "./StatusPage.js";
+
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+
+import AppRouter from "./router";
+import store from "./state/store";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Plivo StatusPage</h1>
-      </header>
-      <StatusPage />
+      <BrowserRouter>
+        <Provider store={store}>
+          <AppRouter />
+        </Provider>
+      </BrowserRouter>
     </div>
   );
 }

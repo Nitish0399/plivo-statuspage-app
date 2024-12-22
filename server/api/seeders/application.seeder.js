@@ -14,7 +14,7 @@ const applications = [
     status: "inactive",
   },
   {
-    name: "3",
+    name: "SendGrid",
     description:
       "SendGrid provides email delivery and email marketing solutions.",
     status: "active",
