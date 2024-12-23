@@ -74,7 +74,9 @@ const StatusPage = () => {
 
   useEffect(() => {
     // Initialize the Socket.IO connection
-    const socket = io(process.env.REACT_APP_API_URL);
+    const socket = io(process.env.REACT_APP_API_URL, {
+      transports: ["websocket"],
+    });
 
     socket.on("connect", () => {
       console.log("Connected to WebSocket server");
