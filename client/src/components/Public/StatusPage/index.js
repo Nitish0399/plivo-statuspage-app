@@ -74,7 +74,7 @@ const StatusPage = () => {
 
   useEffect(() => {
     // Initialize the Socket.IO connection
-    const socket = io(process.env.REACT_APP_API_URL, {
+    const socket = io("wss://plivo-statuspage-server.vercel.app", {
       transports: ["websocket"],
     });
 
