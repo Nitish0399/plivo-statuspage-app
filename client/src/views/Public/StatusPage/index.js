@@ -1,23 +1,17 @@
-import React, { useState, useEffect } from "react";
-import {
-  Box,
-  Button,
-  Typography,
-  Card,
-  CardContent,
-  CircularProgress,
-  Paper,
-  Stack,
-} from "@mui/material";
-
-import Service from "./Service";
-import Incident from "./Incident";
-
 import {
   getApplications,
   getAppServices,
   listIncidents,
 } from "../../../api/public";
+import Incident from "./Incident";
+import Service from "./Service";
+import { Alert } from "@/components/ui/alert";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import { Skeleton } from "@/components/ui/skeleton";
+import React, { useState, useEffect } from "react";
 import { io } from "socket.io-client";
 
 const StatusPage = () => {
@@ -73,8 +67,7 @@ const StatusPage = () => {
   };
 
   useEffect(() => {
-    // Initialize the Socket.IO connection
-    const socket = io("wss://plivo-statuspage-server.vercel.app", {
+    const socket = io(process.env.REACT_APP_API_URL, {
       transports: ["websocket"],
     });
 
@@ -98,60 +91,52 @@ const StatusPage = () => {
     });
 
     return () => {
-      socket.disconnect(); // Cleanup the socket connection when component unmounts
+      socket.disconnect();
     };
   }, []);
 
   return (
-    <Box
-      sx={{
-        padding: 4,
-        bgcolor: "background.default",
-      }}
-    >
+    <div className="p-6 bg-gray-50">
       {loading && (
-        <Box sx={{ display: "flex", justifyContent: "center", mb: 3 }}>
-          <CircularProgress />
-        </Box>
-      )}
-      {error && (
-        <Paper
-          elevation={3}
-          sx={{
-            padding: 2,
-            marginBottom: 3,
-            backgroundColor: "error.light",
-            color: "error.contrastText",
-          }}
-        >
-          <Typography variant="body1">{error}</Typography>
-        </Paper>
+        <div className="flex justify-center mb-4">
+          <Skeleton className="w-8 h-8 rounded-full" />
+        </div>
       )}
 
-      <Stack direction="row" spacing={4} alignItems="flex-start">
+      {error && (
+        <Alert variant="destructive" className="mb-4">
+          {error}
+        </Alert>
+      )}
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Applications Section */}
-        <Box sx={{ flex: 1 }}>
-          <Typography variant="h4" gutterBottom>
-            Applications
-          </Typography>
+        <div>
+          <h3 className="text-lg font-semibold mb-2">Applications</h3>
+          <Separator className="mb-4" />
           {applications.length > 0 ? (
             applications.map((app) => (
-              <Card key={app._id} sx={{ marginBottom: 2, boxShadow: 3 }}>
+              <Card
+                key={app._id}
+                className="mb-4 shadow-md hover:shadow-xl transition duration-300 ease-in-out"
+              >
+                <CardHeader className="pb-2">
+                  <h4 className="text-xl font-semibold text-gray-900">
+                    {app.name}
+                  </h4>
+                </CardHeader>
                 <CardContent>
-                  <Typography variant="h5">{app.name}</Typography>
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                    sx={{ marginBottom: 2 }}
-                  >
+                  <Badge variant="outline" className="mb-2 text-gray-700">
                     Status: {app.status || "Unknown"}
-                  </Typography>
+                  </Badge>
                   <Button
-                    variant="outlined"
+                    variant="outline"
+                    size="sm"
                     onClick={() => {
                       fetchServices(app._id);
                       fetchIncidents(app._id);
                     }}
+                    className="w-full bg-blue-400 text-white rounded-lg hover:bg-blue-700 transition"
                   >
                     Show Status
                   </Button>
@@ -159,29 +144,27 @@ const StatusPage = () => {
               </Card>
             ))
           ) : (
-            <Typography variant="body2">No applications found.</Typography>
+            <p className="text-gray-600">No applications found.</p>
           )}
-        </Box>
+        </div>
 
         {/* Services Section */}
-        <Box sx={{ flex: 1 }}>
-          <Typography variant="h4" gutterBottom>
-            Services
-          </Typography>
+        <div>
+          <h3 className="text-lg font-semibold mb-2">Services</h3>
+          <Separator className="mb-4" />
           {services.length > 0 ? (
             services.map((service) => (
               <Service key={service._id} service={service} />
             ))
           ) : (
-            <Typography variant="body2">No services found.</Typography>
+            <p className="text-gray-600">No services found.</p>
           )}
-        </Box>
+        </div>
 
         {/* Incidents Section */}
-        <Box sx={{ flex: 1 }}>
-          <Typography variant="h4" gutterBottom>
-            Incidents
-          </Typography>
+        <div>
+          <h3 className="text-lg font-semibold mb-2">Incidents</h3>
+          <Separator className="mb-4" />
           {incidents.length > 0 ? (
             incidents.map((incident) => (
               <Incident
@@ -191,11 +174,11 @@ const StatusPage = () => {
               />
             ))
           ) : (
-            <Typography variant="body2">No ongoing incidents.</Typography>
+            <p className="text-gray-600">No ongoing incidents.</p>
           )}
-        </Box>
-      </Stack>
-    </Box>
+        </div>
+      </div>
+    </div>
   );
 };
 

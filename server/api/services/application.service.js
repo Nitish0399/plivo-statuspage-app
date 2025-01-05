@@ -7,6 +7,10 @@ const applicationDb = require("../models/application.model");
  */
 async function addApplication(applicationData) {
   return new Promise((resolve, reject) => {
+    if (!applicationData.name.trim() || !applicationData.description.trim()) {
+      return reject(new Error("Name and description cannot be empty"));
+    }
+
     applicationDb.insert(applicationData, (err, newDoc) => {
       if (err) {
         return reject(new Error(`Error adding application: ${err.message}`));

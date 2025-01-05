@@ -7,6 +7,7 @@ export const createApplication = async (data) => {
     return response.data;
   } catch (error) {
     console.error("Error creating application", error);
+    throw error;
   }
 };
 
@@ -53,6 +54,7 @@ export const createIncident = async (data) => {
     return response.data;
   } catch (error) {
     console.error("Error creating incident", error);
+    throw error;
   }
 };
 
@@ -99,6 +101,7 @@ export const createService = async (data) => {
     return response.data;
   } catch (error) {
     console.error("Error creating service", error);
+    throw error;
   }
 };
 

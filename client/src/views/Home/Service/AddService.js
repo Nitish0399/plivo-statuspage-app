@@ -1,36 +1,45 @@
-import React from "react";
+import { createService } from "../../../api/internal";
+import { Alert } from "@/components/ui/alert";
+import { Save, ArrowBack } from "@mui/icons-material";
 import {
   Box,
   Button,
   TextField,
   Typography,
-  Paper,
   Stack,
+  Paper,
 } from "@mui/material";
-import { Save, ArrowBack } from "@mui/icons-material";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
 
-import { createApplication } from "../../../api/internal";
+const AddService = () => {
+  const { id } = useParams();
+  const [error, setError] = useState(null);
 
-const AddApplication = () => {
   const handleAdd = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
 
-    await createApplication({
-      name: formData.get("name"),
-      description: formData.get("description"),
-    });
-    window.history.back();
+    try {
+      await createService({
+        applicationId: id,
+        name: formData.get("name"),
+        description: formData.get("description"),
+      });
+      window.history.back();
+    } catch (error) {
+      setError(error.error);
+    }
   };
 
   return (
     <Box
       sx={{
+        padding: 4,
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         bgcolor: "background.default",
-        padding: 4,
       }}
     >
       <Paper
@@ -49,7 +58,7 @@ const AddApplication = () => {
           textAlign="center"
           sx={{ fontWeight: "bold" }}
         >
-          Add New Application
+          Add New Service
         </Typography>
         <Typography
           variant="body1"
@@ -57,12 +66,12 @@ const AddApplication = () => {
           textAlign="center"
           sx={{ marginBottom: 3 }}
         >
-          Enter the application details below.
+          Fill out the details below to add a new service to your application.
         </Typography>
         <form onSubmit={handleAdd}>
           <TextField
             name="name"
-            label="Application Name"
+            label="Service Name"
             fullWidth
             margin="normal"
             variant="outlined"
@@ -79,6 +88,11 @@ const AddApplication = () => {
             rows={4}
             required
           />
+          {error && (
+            <Alert variant="destructive" className="mb-4">
+              {error}
+            </Alert>
+          )}
           <Stack
             direction="row"
             spacing={2}
@@ -101,7 +115,7 @@ const AddApplication = () => {
               startIcon={<Save />}
               color="primary"
             >
-              Add Application
+              Add Service
             </Button>
           </Stack>
         </form>
@@ -110,4 +124,4 @@ const AddApplication = () => {
   );
 };
 
-export default AddApplication;
+export default AddService;

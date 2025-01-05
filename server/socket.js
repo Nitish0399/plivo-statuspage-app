@@ -7,9 +7,11 @@ let activeSockets = [];
 const initializeSocket = (server) => {
   io = new Server(server, {
     cors: {
-      origin: "*", // Replace with your React app's URL for production
+      origin: process.env.APP_URL, // Your client URL
       methods: ["GET", "POST"],
+      credentials: true,
     },
+    transports: ["websocket"],
   });
 
   io.on("connection", (socket) => {

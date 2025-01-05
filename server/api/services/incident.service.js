@@ -7,6 +7,18 @@ const incidentModel = require("../models/incident.model");
  */
 const createIncident = (data) => {
   return new Promise((resolve, reject) => {
+    if (
+      !data.title.trim() ||
+      !data.description.trim() ||
+      !data.status.trim() ||
+      data.affectedServices.length === 0
+    ) {
+      return reject(
+        new Error(
+          "Title, description, status, and affected services cannot be empty"
+        )
+      );
+    }
     incidentModel.insert(data, (err, newIncident) => {
       if (err) {
         reject(new Error("Error creating incident."));

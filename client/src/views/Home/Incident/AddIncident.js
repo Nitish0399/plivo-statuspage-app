@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { getAppServices, createIncident } from "../../../api/internal";
+import { Alert } from "@/components/ui/alert";
+import { Save, ArrowBack } from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -13,14 +14,14 @@ import {
   Paper,
   Chip,
 } from "@mui/material";
-import { Save, ArrowBack } from "@mui/icons-material";
-
-import { getAppServices, createIncident } from "../../../api/internal";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const AddIncident = () => {
   const { id } = useParams();
   const [services, setServices] = useState([]);
   const [impactedServices, setImpactedServices] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,14 +35,18 @@ const AddIncident = () => {
     event.preventDefault();
     const formData = new FormData(event.target);
 
-    await createIncident({
-      applicationId: id,
-      title: formData.get("title"),
-      description: formData.get("description"),
-      status: formData.get("status"),
-      affectedServices: impactedServices,
-    });
-    window.history.back();
+    try {
+      await createIncident({
+        applicationId: id,
+        title: formData.get("title"),
+        description: formData.get("description"),
+        status: formData.get("status"),
+        affectedServices: impactedServices,
+      });
+      window.history.back();
+    } catch (error) {
+      setError(error.error);
+    }
   };
 
   const handleChange = (event) => {
@@ -145,6 +150,11 @@ const AddIncident = () => {
               ))}
             </Select>
           </FormControl>
+          {error && (
+            <Alert variant="destructive" className="mb-4">
+              {error}
+            </Alert>
+          )}
           <Stack
             direction="row"
             spacing={2}

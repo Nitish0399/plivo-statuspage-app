@@ -1,5 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import {
+  getAppServices,
+  deleteService,
+  updateService,
+} from "../../../api/internal";
+import { Construction, Delete, Info } from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -18,13 +22,8 @@ import {
   InputLabel,
   CircularProgress,
 } from "@mui/material";
-import { Construction, Delete, Info } from "@mui/icons-material";
-
-import {
-  getAppServices,
-  deleteService,
-  updateService,
-} from "../../../api/internal";
+import React, { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
 
 const Services = () => {
   const { id } = useParams();

@@ -1,19 +1,17 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
-
+import AuthLayout from "./layouts/Auth";
 // Layouts
 import MainLayout from "./layouts/Main";
-import AuthLayout from "./layouts/Auth";
-
+import Applications from "./views/Home/Application";
+import AddApplication from "./views/Home/Application/AddApplication";
+import Incidents from "./views/Home/Incident";
+import AddIncident from "./views/Home/Incident/AddIncident";
+import Services from "./views/Home/Service";
+import AddService from "./views/Home/Service/AddService";
 // Components
-import Login from "./components/Public/Login";
-import StatusPage from "./components/Public/StatusPage";
-import Applications from "./components/Home/Application";
-import Services from "./components/Home/Service";
-import Incidents from "./components/Home/Incident";
-import AddApplication from "./components/Home/Application/AddApplication";
-import AddService from "./components/Home/Service/AddService";
-import AddIncident from "./components/Home/Incident/AddIncident";
+import Login from "./views/Public/Login";
+import StatusPage from "./views/Public/StatusPage";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 
 const AppRouter = () => {
   return (

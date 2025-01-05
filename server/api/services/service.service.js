@@ -8,6 +8,9 @@ const { emitStatusChange } = require("../../socket");
  */
 const createService = (data) => {
   return new Promise((resolve, reject) => {
+    if (!data.name.trim() || !data.description.trim()) {
+      return reject(new Error("Name and description cannot be empty"));
+    }
     serviceModel.insert(data, (err, newService) => {
       if (err) return reject(err);
       resolve(newService);
