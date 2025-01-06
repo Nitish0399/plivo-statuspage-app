@@ -1,5 +1,3 @@
-// Assuming you are using Lucide icons
-
 import { createApplication } from "../../../api/internal";
 import { Alert } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
@@ -27,7 +25,7 @@ const AddApplication = () => {
   };
 
   return (
-    <div className="flex justify-center items-center bg-gray-100 p-6">
+    <div className="flex justify-center items-center p-6">
       <Card className="w-full max-w-md p-6 rounded-lg shadow-lg">
         <h1 className="text-3xl font-bold text-center mb-4">
           Add New Application
@@ -75,18 +73,18 @@ const AddApplication = () => {
           )}
           <div className="mt-6 flex justify-end space-x-4">
             <Button
-              type="button"
-              variant="outline"
-              startIcon={<ArrowLeftIcon />}
+              variant="solid"
+              className="flex items-center space-x-2 text-gray-600 hover:text-gray-800"
               onClick={() => window.history.back()}
             >
-              Back
+              <ArrowLeftIcon className="w-4 h-4" /> Back
             </Button>
             <Button
               type="submit"
-              variant="solid"
-              startIcon={<PaperAirplaneIcon />}
+              variant="outline"
+              className="flex items-center space-x-2 text-green-600 hover:text-green-800"
             >
+              <PaperAirplaneIcon className="w-4 h-4" />
               Add Application
             </Button>
           </div>

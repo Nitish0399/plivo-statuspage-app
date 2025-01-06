@@ -63,7 +63,7 @@ const Login = () => {
                 id="email"
                 type="email"
                 name="email"
-                value="john_doe@plivo.com"
+                placeholder="Your email address"
                 required
                 className="rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500"
               />
@@ -80,7 +80,7 @@ const Login = () => {
                 id="password"
                 type="password"
                 name="password"
-                value="Pass@123"
+                placeholder="Your password"
                 required
                 className="rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500"
               />

@@ -33,17 +33,15 @@ const Applications = () => {
 
   return (
     <div className="p-6 space-y-8">
-      <h1 className="text-4xl font-extrabold text-gray-900 mb-4">
-        Applications
-      </h1>
-      <p className="text-lg text-gray-600 mb-6">
+      <h1 className="text-4xl font-extrabold text-gray-900">Applications</h1>
+      <p className="text-lg text-gray-600 mt-1">
         Manage and explore all your applications in one place.
       </p>
 
       <Button
         variant="link"
         onClick={() => navigate("/home/add-application")}
-        className="flex items-center space-x-2 text-blue-600 hover:text-blue-800"
+        className="flex items-center text-blue-600 hover:text-blue-800 mt-1"
       >
         <PlusIcon className="w-5 h-5" /> <span>Add Application</span>
       </Button>
